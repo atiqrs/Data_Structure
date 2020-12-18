@@ -7,25 +7,35 @@ struct node{
 
 int main(){
     int i,n,item;
+    struct node *p, *q, *head;
     //Input Section
-    printf("Enter how many number you want to sort: ");
+    printf("Enter how many nodes: ");
     scanf("%d",&n);
-    printf("Enter %d number\'s\n",n);
-    for(i=0; i<n; i++)
-        scanf("%d",&a[i]);
-    //Bubble Sort
+    printf("\nEnter First Item: ");
+    scanf("%d",&item);
+
+    q=(struct node *) malloc(sizeof(struct node));
+    q-> data = item;
+    q-> next = NULL;
+    head = q;
+    p= head;
     for(i=0; i<n-1; i++){
-        for(j=0; j<n-1; j++){
-            if(a[j]>a[j+1]){
-                temp = a[j];
-                a[j]=a[j+1];
-                a[j+1]=temp;
-            }
-        }
+        printf("\nEnter Next Item: ");
+        scanf("%d",&item);
+
+        q=(struct node *) malloc(sizeof(struct node));
+        q-> data = item;
+        q-> next = NULL;
+        p-> next = q;
+        p = p -> next;
     }
+    p=head;
     //Output Section (Traversing)
-    printf("\nYour sorted number shorted numbers:");
-    for(i=0; i<n; i++)
-        printf(" %d",a[i]);
+    printf("\nYour sorted number shorted numbers:\n");
+    while(p!=NULL){
+        printf("%d\n",p->data);
+        p=p->next;
+    }
+
     return 0;
 }
